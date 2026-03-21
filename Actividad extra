@@ -1,0 +1,31 @@
+def mostrar_menu():
+    print("\n--- TORNEO DE FÚTBOL ---")
+    print("1. Agregar equipo")
+    print("2. Registrar resultado")
+    print("3. Mostrar tabla de posiciones")
+    print("4. Eliminar equipo")
+    print("5. Salir")
+
+
+def main():
+    opcion = ""
+
+    while opcion != "5":
+        mostrar_menu()
+        opcion = input("Elegí una opción: ")
+
+        if opcion == "1":
+            print("Opción agregar equipo")
+        elif opcion == "2":
+            print("Opción registrar resultado")
+        elif opcion == "3":
+            print("Opción mostrar tabla")
+        elif opcion == "4":
+            print("Opción eliminar equipo")
+        elif opcion == "5":
+            print("Saliendo del programa...")
+        else:
+            print("Opción inválida")
+
+
+main()
