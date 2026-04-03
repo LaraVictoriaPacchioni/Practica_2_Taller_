@@ -1,45 +1,39 @@
 def obtener_lineas(texto):
-    """Retorna una lista de las lineas del texto."""
-    return texto.split("\n")
+    """Devuelve una lista con las líneas del texto."""
+    return texto.splitlines()
+
+
+def contar_palabras_linea(linea):
+    """Devuelve la cantidad de palabras de una línea."""
+    return len(linea.split())
+
+
 def contar_lineas(lineas):
-    """Retorna la cantidad de líneas."""
+    """Devuelve la cantidad total de líneas."""
     return len(lineas)
+
+
 def contar_palabras(lineas):
-    """Retorna la cantidad total de palabras."""
+    """Devuelve la cantidad total de palabras."""
     total = 0
 
     for linea in lineas:
-        palabras = linea.split()
-        total += len(palabras)
+        total += contar_palabras_linea(linea)
 
     return total
-def calcular_promedio(cantidad_palabras, cantidad_lineas):
-    """Retorna el promedio de palabras por línea."""
-    return cantidad_palabras / cantidad_lineas
-def lineas_mayores_promedio(lineas, promedio):
-    """Imprime las líneas con más palabras que el promedio."""
 
-    print("Líneas por encima del promedio:")
+
+def calcular_promedio(cantidad_palabras, cantidad_lineas):
+    """Devuelve el promedio de palabras por línea."""
+    return cantidad_palabras / cantidad_lineas
+
+
+def obtener_lineas_superiores(lineas, promedio):
+    """Devuelve las líneas cuya cantidad de palabras supera el promedio."""
+    superiores = []
 
     for linea in lineas:
-        cantidad = len(linea.split())
+        if contar_palabras_linea(linea) > promedio:
+            superiores.append(linea)
 
-        if cantidad > promedio:
-            print("-", linea)
-def main():
-    texto = "Esto es una prueba"
-
-    lineas = obtener_lineas(texto)
-    cantidad_lineas = contar_lineas(lineas)
-    cantidad_palabras = contar_palabras(lineas)
-    promedio = calcular_promedio(cantidad_palabras, cantidad_lineas)
-
-    print("Total de líneas:", cantidad_lineas)
-    print("Total de palabras:", cantidad_palabras)
-    print("Promedio de palabras por línea:", promedio)
-
-    lineas_mayores_promedio(lineas, promedio)
-
-
-if __name__ == "__main__":
-    main()
+    return superiores
